@@ -262,13 +262,13 @@
 <!-- ════════════════════════════════════════
      FREE TRIAL MODAL
 ════════════════════════════════════════ -->
-<div id="freeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Free Trial">
+<div id="freeModal" class="modal-overlay" role="dialog" aria-modal="true">
   <div class="modal-box">
-    <button class="modal-close" id="closeFree" aria-label="Close">&#x2715;</button>
+    <button class="modal-close" id="closeFree">&#x2715;</button>
     <h2 class="modal-title">🎁 मुफ़्त में बात करें</h2>
-    <p class="modal-hint">बस नाम और नंबर दें — Vivek Bhai खुद call/message करेंगे।</p>
+    <p class="modal-hint">पहली बार? बस ये भरो — Vivek Bhai खुद WhatsApp करेंगे।</p>
 
-    <div id="freeError" class="form-error">कृपया नाम और नंबर दोनों भरें!</div>
+    <div id="freeError" class="form-error">कृपया सभी जरूरी fields भरें!</div>
 
     <label class="field-label" for="freeName">आपका नाम</label>
     <input class="field-input" type="text" id="freeName" placeholder="नाम लिखें..." />
@@ -276,11 +276,33 @@
     <label class="field-label" for="freePhone">WhatsApp नंबर</label>
     <input class="field-input" type="tel" id="freePhone" placeholder="10 अंक का नंबर..." maxlength="10" />
 
-    <button class="btn btn-gold" id="freeSubmitBtn">Submit करें</button>
+    <label class="field-label" for="freeReason">मुख्य परेशानी</label>
+    <select class="field-input" id="freeReason">
+      <option value="">— चुनें —</option>
+      <option value="रिश्ते का दर्द / धोखा">💔 रिश्ते का दर्द / धोखा</option>
+      <option value="अकेलापन / कोई नहीं समझता">😔 अकेलापन / कोई नहीं समझता</option>
+      <option value="सामाजिक डर / लोग क्या सोचेंगे">😰 सामाजिक डर / लोग क्या सोचेंगे</option>
+      <option value="ओवरथिंकिंग / नींद नहीं आती">🧠 ओवरथिंकिंग / नींद नहीं आती</option>
+      <option value="करियर रुका / असफलता का डर">💼 करियर रुका / असफलता का डर</option>
+      <option value="घर में घुटन / परिवार से तकरार">👨‍👩‍👧 घर में घुटन / परिवार से तकरार</option>
+      <option value="पैसों की चिंता / भविष्य का डर">💸 पैसों की चिंता / भविष्य का डर</option>
+      <option value="जिंदगी में दिशा नहीं / खालीपन">🧭 जिंदगी में दिशा नहीं / खालीपन</option>
+      <option value="गुस्सा / अंदर से टूटा हुआ">😤 गुस्सा / अंदर से टूटा हुआ</option>
+      <option value="राज़ जो किसी को नहीं बता सकते">🔒 राज़ जो किसी को नहीं बता सकते</option>
+    </select>
+
+    <label class="field-label" for="freeTime">बात करने का सही समय</label>
+    <select class="field-input" id="freeTime">
+      <option value="">— चुनें —</option>
+      <option value="दिन 11 बजे - 2 बजे">☀️ दिन — 11 बजे से 2 बजे</option>
+      <option value="रात 9 बजे - 12 बजे">🌙 रात — 9 बजे से 12 बजे</option>
+    </select>
+
+    <button class="btn btn-gold" id="freeSubmitBtn">Submit करें →</button>
 
     <div id="freeSuccess" class="free-success hidden">
       <div class="success-icon">✓</div>
-      <p>आपका नंबर मिल गया!<br />Vivek Bhai जल्द संपर्क करेंगे।</p>
+      <p>आपका नंबर मिल गया!<br />Vivek Bhai जल्द WhatsApp करेंगे। 😊</p>
     </div>
   </div>
 </div>
