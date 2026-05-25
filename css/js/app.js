@@ -1,297 +1,268 @@
-/* ============================================
-   TALK VH — app.js
-   All Logic: Modal, Payment, Bhadas, PWA
-   ============================================ */
+/* ════════════════════════════════════════
+   TALK VH — js/app.js
+   All logic: Modals, Bhadas burn, Payment
+════════════════════════════════════════ */
 
-// ============================================
-// CONFIG
-// ============================================
-const CONFIG = {
-    upiId: "v.hardaha@oksbi",
-    upiName: "TalkVH",
-    adminEmail: "talkvh.help@gmail.com",
-    appsScriptUrl: "" // Google Apps Script URL baad mein yahan daalna
+'use strict';
+
+/* ── CONFIG ── */
+const CFG = {
+  upiId:   'v.hardaha@oksbi',
+  upiName: 'TalkVH',
+  appsScriptUrl: '' /* paste Google Apps Script URL here later */
 };
 
-// ============================================
-// BOOKING MODAL — OPEN / CLOSE
-// ============================================
-function openBooking(planName, price) {
-    document.getElementById("pName").innerText = planName;
-    document.getElementById("pPrice").innerText = price;
-    document.getElementById("formError").style.display = "none";
-    document.getElementById("cName").value = "";
-    document.getElementById("cContact").value = "";
-    document.getElementById("cTopic").selectedIndex = 0;
-    document.getElementById("bookingModal").classList.add("open");
-    document.body.style.overflow = "hidden";
-}
+/* ── DOM REFS — grabbed once on DOMContentLoaded ── */
+let DOM = {};
 
-function closeBooking() {
-    document.getElementById("bookingModal").classList.remove("open");
-    document.body.style.overflow = "";
-}
+document.addEventListener('DOMContentLoaded', () => {
 
-// ============================================
-// FREE TRIAL MODAL — OPEN / CLOSE
-// ============================================
-function openFree() {
-    document.getElementById("freeError").style.display = "none";
-    document.getElementById("freeName").value = "";
-    document.getElementById("freePhone").value = "";
-    document.getElementById("freeSuccess").style.display = "none";
-    document.getElementById("freeModal").classList.add("open");
-    document.body.style.overflow = "hidden";
-}
+  DOM = {
+    /* Booking modal */
+    bookingModal:  document.getElementById('bookingModal'),
+    closeBooking:  document.getElementById('closeBooking'),
+    bookingError:  document.getElementById('bookingError'),
+    bName:         document.getElementById('bName'),
+    bContact:      document.getElementById('bContact'),
+    bTopic:        document.getElementById('bTopic'),
+    bPlanName:     document.getElementById('bPlanName'),
+    bPrice:        document.getElementById('bPrice'),
+    payBtn:        document.getElementById('payBtn'),
 
-function closeFree() {
-    document.getElementById("freeModal").classList.remove("open");
-    document.body.style.overflow = "";
-}
+    /* Free modal */
+    freeModal:     document.getElementById('freeModal'),
+    closeFree:     document.getElementById('closeFree'),
+    freeError:     document.getElementById('freeError'),
+    freeName:      document.getElementById('freeName'),
+    freePhone:     document.getElementById('freePhone'),
+    freeSubmitBtn: document.getElementById('freeSubmitBtn'),
+    freeSuccess:   document.getElementById('freeSuccess'),
 
-// ============================================
-// FREE TRIAL — SUBMIT
-// ============================================
-function submitFree() {
-    const name  = document.getElementById("freeName").value.trim();
-    const phone = document.getElementById("freePhone").value.trim();
-    const err   = document.getElementById("freeError");
+    /* Payment success screen */
+    paySuccess:      document.getElementById('paySuccess'),
+    closePaySuccess: document.getElementById('closePaySuccess'),
 
-    // Validation
-    if (!name || phone.length < 10) {
-        err.style.display = "block";
-        return;
-    }
-    err.style.display = "none";
+    /* Bhadas */
+    bhadasText:    document.getElementById('bhadasText'),
+    burnBtn:       document.getElementById('burnBtn'),
+    bhadasDefault: document.getElementById('bhadasDefault'),
+    bhadasSuccess: document.getElementById('bhadasSuccess'),
+  };
 
-    // Apps Script ko data bhejo (agar URL set hai)
-    if (CONFIG.appsScriptUrl) {
-        const data = {
-            type: "FREE_TRIAL",
-            name: name,
-            phone: phone,
-            timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
-        };
-
-        fetch(CONFIG.appsScriptUrl, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        }).catch(() => {}); // silently fail — sheet baad mein bhi manual update ho sakti hai
-    }
-
-    // Success dikhao
-    document.getElementById("freeSuccess").style.display = "block";
-
-    // Buttons hide karo
-    document.querySelector("#freeModal .btn-solid").style.display = "none";
-}
-
-// ============================================
-// PAYMENT — PAY NOW
-// ============================================
-function payNow() {
-    const name    = document.getElementById("cName").value.trim();
-    const contact = document.getElementById("cContact").value.trim();
-    const price   = document.getElementById("pPrice").innerText;
-    const plan    = document.getElementById("pName").innerText;
-    const topic   = document.getElementById("cTopic").value;
-    const err     = document.getElementById("formError");
-
-    // Validation
-    if (!name) {
-        err.style.display = "block";
-        err.innerText = "कृपया नाम लिखें!";
-        return;
-    }
-    err.style.display = "none";
-
-    // UPI Deep Link
-    const note   = "TalkVH_" + name.replace(/\s/g, "_").substring(0, 20);
-    const upiUrl = `upi://pay?pa=${CONFIG.upiId}&pn=${encodeURIComponent(CONFIG.upiName)}&am=${price}&cu=INR&tn=${encodeURIComponent(note)}`;
-
-    // Modal band karo
-    closeBooking();
-
-    // UPI app kholo
-    window.location.href = upiUrl;
-
-    // 4 second baad success screen dikhao
-    setTimeout(() => {
-        showSuccess(name, contact, plan, price, topic);
-    }, 4000);
-}
-
-// ============================================
-// SUCCESS SCREEN — SHOW / CLOSE
-// ============================================
-function showSuccess(name, contact, plan, price, topic) {
-    document.getElementById("successScreen").classList.add("open");
-    document.body.style.overflow = "hidden";
-
-    // Apps Script ko data bhejo
-    if (CONFIG.appsScriptUrl) {
-        const data = {
-            type: "BOOKING",
-            name: name,
-            contact: contact || "Not provided",
-            plan: plan,
-            amount: price,
-            topic: topic,
-            timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
-        };
-
-        fetch(CONFIG.appsScriptUrl, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        }).catch(() => {});
-    }
-}
-
-function closeSuccess() {
-    document.getElementById("successScreen").classList.remove("open");
-    document.body.style.overflow = "";
-}
-
-// ============================================
-// BHADAS BOX — SHАNDAAR FIRE ANIMATION 🔥
-// ============================================
-function burnIt() {
-    const text     = document.getElementById("bhadasText").value.trim();
-    const overlay  = document.getElementById("fireOverlay");
-    const burnBtn  = document.getElementById("burnBtn");
-    const success  = document.getElementById("burnSuccess");
-    const textarea = document.getElementById("bhadasText");
-    const wrap = document.getElementById("bhadasText").closest(".bhadas-box-wrap") || document.querySelector(".bhadas-box-wrap");
-    if (!text) {
-        textarea.placeholder = "पहले कुछ लिखो तो... 😄";
-        textarea.focus();
-        return;
-    }
-
-    // Button disable
-    burnBtn.disabled = true;
-    burnBtn.innerHTML = "🔥 जल रहा है...";
-
-    // Phase 1 — Textarea shake
-    textarea.style.animation = "shake 0.4s ease";
-
-    // Phase 2 — Fire overlay ON
-    setTimeout(() => {
-        overlay.classList.add("active");
-        // Continuous particles
-        let count = 0;
-        const interval = setInterval(() => {
-            spawnFireParticles(wrap);
-            count++;
-            if (count > 12) clearInterval(interval);
-        }, 120);
-    }, 300);
-
-    // Phase 3 — Text fade + char-by-char burn effect
-    setTimeout(() => {
-        let chars = textarea.value.split("");
-        let i = chars.length - 1;
-        const burnChars = setInterval(() => {
-            if (i < 0) {
-                clearInterval(burnChars);
-                return;
-            }
-            chars[i] = "";
-            textarea.value = chars.join("");
-            i -= Math.floor(Math.random() * 3) + 1;
-        }, 30);
-    }, 600);
-
-    // Phase 4 — Final blast particles
-    setTimeout(() => {
-        for (let b = 0; b < 3; b++) {
-            setTimeout(() => spawnFireParticles(wrap, true), b * 150);
-        }
-    }, 1200);
-
-    // Phase 5 — Sab khatam, success
-    setTimeout(() => {
-        overlay.classList.remove("active");
-        textarea.style.animation = "";
-        burnBtn.style.display    = "none";
-        textarea.style.display   = "none";
-        success.style.display    = "block";
-    }, 2200);
-}
-
-function spawnFireParticles(wrapper, blast = false) {
-    const colors  = ["#ff3c00","#ff6a00","#ff9500","#ffb300","#ff5500","#fff176"];
-    const count   = blast ? 25 : 10;
-
-    for (let i = 0; i < count; i++) {
-        setTimeout(() => {
-            const p = document.createElement("div");
-            p.className = "fire-particle";
-
-            const size = blast ? (8 + Math.random() * 14) : (5 + Math.random() * 9);
-            const left = blast ? (10 + Math.random() * 80) : (Math.random() * 92);
-
-            p.style.cssText = `
-                left: ${left}%;
-                bottom: ${blast ? Math.random() * 30 : 5}px;
-                width: ${size}px;
-                height: ${size * 1.4}px;
-                background: radial-gradient(circle at 40% 30%, #fff176, ${colors[Math.floor(Math.random() * colors.length)]});
-                animation-duration: ${0.5 + Math.random() * 0.7}s;
-                animation-delay: ${Math.random() * 0.2}s;
-                border-radius: 50% 50% 30% 30%;
-                filter: blur(${blast ? 1 : 0.5}px);
-                box-shadow: 0 0 6px ${colors[0]};
-            `;
-            wrapper.appendChild(p);
-            setTimeout(() => p.remove(), 1400);
-        }, i * (blast ? 30 : 50));
-    }
-}
-// ============================================
-// CLOSE MODALS ON BACKDROP CLICK
-// ============================================
-document.addEventListener("DOMContentLoaded", () => {
-
-    // Booking modal backdrop
-    document.getElementById("bookingModal").addEventListener("click", function(e) {
-        if (e.target === this) closeBooking();
-    });
-
-    // Free modal backdrop
-    document.getElementById("freeModal").addEventListener("click", function(e) {
-        if (e.target === this) closeFree();
-    });
-
-    // ESC key se close
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            closeBooking();
-            closeFree();
-        }
-    });
-
-    // Phone number — sirf numbers
-    const phoneInput = document.getElementById("freePhone");
-    if (phoneInput) {
-        phoneInput.addEventListener("input", () => {
-            phoneInput.value = phoneInput.value.replace(/\D/g, "").substring(0, 10);
-        });
-    }
-
+  attachListeners();
+  initPWA();
 });
 
-// ============================================
-// PWA — SERVICE WORKER
-// ============================================
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js")
-            .then(reg  => console.log("✅ SW Registered", reg))
-            .catch(err => console.log("❌ SW Failed", err));
-    });
+/* ════════════════════════════════════════
+   ATTACH ALL EVENT LISTENERS
+════════════════════════════════════════ */
+function attachListeners() {
+
+  /* Close booking modal */
+  DOM.closeBooking.addEventListener('click', closeBookingModal);
+  DOM.bookingModal.addEventListener('click', (e) => {
+    if (e.target === DOM.bookingModal) closeBookingModal();
+  });
+
+  /* Pay button */
+  DOM.payBtn.addEventListener('click', handlePayment);
+
+  /* Close free modal */
+  DOM.closeFree.addEventListener('click', closeFreeModal);
+  DOM.freeModal.addEventListener('click', (e) => {
+    if (e.target === DOM.freeModal) closeFreeModal();
+  });
+
+  /* Free submit */
+  DOM.freeSubmitBtn.addEventListener('click', handleFreeSubmit);
+
+  /* Phone number — digits only */
+  DOM.freePhone.addEventListener('input', () => {
+    DOM.freePhone.value = DOM.freePhone.value.replace(/\D/g, '').slice(0, 10);
+  });
+
+  /* Pay success close */
+  DOM.closePaySuccess.addEventListener('click', () => {
+    DOM.paySuccess.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+
+  /* Burn button */
+  DOM.burnBtn.addEventListener('click', handleBurn);
+
+  /* ESC key closes any open modal */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeBookingModal();
+      closeFreeModal();
+    }
+  });
 }
+
+/* ════════════════════════════════════════
+   BOOKING MODAL
+════════════════════════════════════════ */
+function openBookingModal(planName, price) {
+  DOM.bPlanName.textContent = planName;
+  DOM.bPrice.textContent    = price;
+  DOM.bookingError.style.display = 'none';
+  DOM.bName.value    = '';
+  DOM.bContact.value = '';
+  DOM.bTopic.selectedIndex = 0;
+  DOM.bookingModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => DOM.bName.focus(), 300);
+}
+
+function closeBookingModal() {
+  DOM.bookingModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ════════════════════════════════════════
+   FREE TRIAL MODAL
+════════════════════════════════════════ */
+function openFreeModal() {
+  DOM.freeError.style.display   = 'none';
+  DOM.freeSuccess.classList.add('hidden');
+  DOM.freeSubmitBtn.style.display = 'block';
+  DOM.freeName.value  = '';
+  DOM.freePhone.value = '';
+  DOM.freeModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFreeModal() {
+  DOM.freeModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleFreeSubmit() {
+  const name  = DOM.freeName.value.trim();
+  const phone = DOM.freePhone.value.trim();
+
+  if (!name || phone.length < 10) {
+    DOM.freeError.style.display = 'block';
+    return;
+  }
+  DOM.freeError.style.display = 'none';
+
+  /* Send to Apps Script if configured */
+  sendToSheet({ type: 'FREE_TRIAL', name, phone });
+
+  /* Show success */
+  DOM.freeSubmitBtn.style.display = 'none';
+  DOM.freeSuccess.classList.remove('hidden');
+}
+
+/* ════════════════════════════════════════
+   PAYMENT
+════════════════════════════════════════ */
+function handlePayment() {
+  const name    = DOM.bName.value.trim();
+  const contact = DOM.bContact.value.trim();
+  const price   = DOM.bPrice.textContent;
+  const plan    = DOM.bPlanName.textContent;
+  const topic   = DOM.bTopic.value;
+
+  if (!name) {
+    DOM.bookingError.style.display = 'block';
+    DOM.bookingError.textContent   = 'कृपया नाम लिखें!';
+    DOM.bName.focus();
+    return;
+  }
+  DOM.bookingError.style.display = 'none';
+
+  /* Build UPI deep link */
+  const note   = 'TalkVH_' + name.replace(/\s+/g, '_').slice(0, 18);
+  const upiUrl = `upi://pay?pa=${CFG.upiId}&pn=${encodeURIComponent(CFG.upiName)}&am=${price}&cu=INR&tn=${encodeURIComponent(note)}`;
+
+  closeBookingModal();
+
+  /* Open UPI app */
+  window.location.href = upiUrl;
+
+  /* After 4s show success screen */
+  setTimeout(() => {
+    sendToSheet({ type: 'BOOKING', name, contact: contact || 'N/A', plan, amount: price, topic });
+    showPaySuccess();
+  }, 4000);
+}
+
+function showPaySuccess() {
+  DOM.paySuccess.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+/* ════════════════════════════════════════
+   BHADAS BURN 🔥
+   Pure CSS + JS — no external libs
+════════════════════════════════════════ */
+function handleBurn() {
+  const textarea = DOM.bhadasText;
+  const text     = textarea.value.trim();
+
+  /* Nothing typed — prompt gently */
+  if (!text) {
+    textarea.placeholder = 'पहले कुछ लिखो तो... 😄';
+    textarea.focus();
+    return;
+  }
+
+  /* Disable button immediately */
+  DOM.burnBtn.disabled     = true;
+  DOM.burnBtn.textContent  = '🔥 जल रहा है...';
+
+  /* PHASE 1 (0ms) — Shake the textarea */
+  textarea.classList.add('shake');
+
+  /* PHASE 2 (450ms) — Text turns red, fades out */
+  setTimeout(() => {
+    textarea.classList.remove('shake');
+    textarea.classList.add('burning');
+  }, 450);
+
+  /* PHASE 3 (1800ms) — Clear text silently */
+  setTimeout(() => {
+    textarea.value = '';
+    textarea.style.opacity = '1';          /* reset inline opacity for next use */
+    textarea.classList.remove('burning');
+  }, 1800);
+
+  /* PHASE 4 (2000ms) — Show success message */
+  setTimeout(() => {
+    DOM.bhadasDefault.classList.add('hidden');
+    DOM.bhadasSuccess.classList.remove('hidden');
+  }, 2000);
+}
+
+/* ════════════════════════════════════════
+   APPS SCRIPT — SEND DATA
+════════════════════════════════════════ */
+function sendToSheet(data) {
+  if (!CFG.appsScriptUrl) return;
+  data.timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+  fetch(CFG.appsScriptUrl, {
+    method:  'POST',
+    mode:    'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(data)
+  }).catch(() => {/* silent fail */});
+}
+
+/* ════════════════════════════════════════
+   PWA SERVICE WORKER
+════════════════════════════════════════ */
+function initPWA() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(r => console.log('✅ SW registered', r.scope))
+      .catch(e => console.log('SW error', e));
+  }
+}
+
+/* ════════════════════════════════════════
+   GLOBAL FUNCTIONS (called from HTML onclick)
+════════════════════════════════════════ */
+window.openBookingModal = openBookingModal;
+window.openFreeModal    = openFreeModal;
