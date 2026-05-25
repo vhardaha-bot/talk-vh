@@ -165,8 +165,7 @@ function burnIt() {
     const burnBtn  = document.getElementById("burnBtn");
     const success  = document.getElementById("burnSuccess");
     const textarea = document.getElementById("bhadasText");
-    const wrap     = document.querySelector(".bhadas-box-wrap");
-
+    const wrap = document.getElementById("bhadasText").closest(".bhadas-box-wrap") || document.querySelector(".bhadas-box-wrap");
     if (!text) {
         textarea.placeholder = "पहले कुछ लिखो तो... 😄";
         textarea.focus();
