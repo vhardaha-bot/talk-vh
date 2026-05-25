@@ -157,7 +157,7 @@ function closeSuccess() {
 }
 
 // ============================================
-// BHADAS BOX — BURN ANIMATION 🔥
+// BHADAS BOX — SHАNDAAR FIRE ANIMATION 🔥
 // ============================================
 function burnIt() {
     const text     = document.getElementById("bhadasText").value.trim();
@@ -165,6 +165,7 @@ function burnIt() {
     const burnBtn  = document.getElementById("burnBtn");
     const success  = document.getElementById("burnSuccess");
     const textarea = document.getElementById("bhadasText");
+    const wrap     = document.querySelector(".bhadas-box-wrap");
 
     if (!text) {
         textarea.placeholder = "पहले कुछ लिखो तो... 😄";
@@ -172,60 +173,86 @@ function burnIt() {
         return;
     }
 
-    // Fire overlay ON
-    overlay.classList.add("active");
+    // Button disable
     burnBtn.disabled = true;
-    burnBtn.innerText = "🔥 जल रहा है...";
+    burnBtn.innerHTML = "🔥 जल रहा है...";
 
-    // Fire particles banao
-    spawnFireParticles(textarea);
+    // Phase 1 — Textarea shake
+    textarea.style.animation = "shake 0.4s ease";
 
-    // Text slowly hatao
-    let opacity = 1;
-    const fadeText = setInterval(() => {
-        opacity -= 0.08;
-        textarea.style.opacity = opacity;
-        if (opacity <= 0) {
-            clearInterval(fadeText);
-            textarea.value = "";
-            textarea.style.opacity = 1;
+    // Phase 2 — Fire overlay ON
+    setTimeout(() => {
+        overlay.classList.add("active");
+        // Continuous particles
+        let count = 0;
+        const interval = setInterval(() => {
+            spawnFireParticles(wrap);
+            count++;
+            if (count > 12) clearInterval(interval);
+        }, 120);
+    }, 300);
+
+    // Phase 3 — Text fade + char-by-char burn effect
+    setTimeout(() => {
+        let chars = textarea.value.split("");
+        let i = chars.length - 1;
+        const burnChars = setInterval(() => {
+            if (i < 0) {
+                clearInterval(burnChars);
+                return;
+            }
+            chars[i] = "";
+            textarea.value = chars.join("");
+            i -= Math.floor(Math.random() * 3) + 1;
+        }, 30);
+    }, 600);
+
+    // Phase 4 — Final blast particles
+    setTimeout(() => {
+        for (let b = 0; b < 3; b++) {
+            setTimeout(() => spawnFireParticles(wrap, true), b * 150);
         }
-    }, 60);
+    }, 1200);
 
-    // 2 second baad — sab khatam, success dikhao
+    // Phase 5 — Sab khatam, success
     setTimeout(() => {
         overlay.classList.remove("active");
-        burnBtn.style.display = "none";
-        textarea.style.display = "none";
-        success.style.display = "block";
-    }, 2000);
+        textarea.style.animation = "";
+        burnBtn.style.display    = "none";
+        textarea.style.display   = "none";
+        success.style.display    = "block";
+    }, 2200);
 }
 
-// Fire particles spawn karo
-function spawnFireParticles(element) {
-    const rect    = element.getBoundingClientRect();
-    const wrapper = element.parentElement;
-    const colors  = ["#ff3c00", "#ff7a00", "#ffb300", "#ff5500", "#ff9500"];
+function spawnFireParticles(wrapper, blast = false) {
+    const colors  = ["#ff3c00","#ff6a00","#ff9500","#ffb300","#ff5500","#fff176"];
+    const count   = blast ? 25 : 10;
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < count; i++) {
         setTimeout(() => {
             const p = document.createElement("div");
             p.className = "fire-particle";
-            p.style.left            = Math.random() * 90 + "%";
-            p.style.bottom          = "10px";
-            p.style.background      = colors[Math.floor(Math.random() * colors.length)];
-            p.style.width           = (6 + Math.random() * 8) + "px";
-            p.style.height          = (6 + Math.random() * 8) + "px";
-            p.style.animationDelay  = (Math.random() * 0.4) + "s";
-            p.style.animationDuration = (0.6 + Math.random() * 0.5) + "s";
-            wrapper.appendChild(p);
 
-            // Remove after animation
-            setTimeout(() => p.remove(), 1200);
-        }, i * 60);
+            const size = blast ? (8 + Math.random() * 14) : (5 + Math.random() * 9);
+            const left = blast ? (10 + Math.random() * 80) : (Math.random() * 92);
+
+            p.style.cssText = `
+                left: ${left}%;
+                bottom: ${blast ? Math.random() * 30 : 5}px;
+                width: ${size}px;
+                height: ${size * 1.4}px;
+                background: radial-gradient(circle at 40% 30%, #fff176, ${colors[Math.floor(Math.random() * colors.length)]});
+                animation-duration: ${0.5 + Math.random() * 0.7}s;
+                animation-delay: ${Math.random() * 0.2}s;
+                border-radius: 50% 50% 30% 30%;
+                filter: blur(${blast ? 1 : 0.5}px);
+                box-shadow: 0 0 6px ${colors[0]};
+            `;
+            wrapper.appendChild(p);
+            setTimeout(() => p.remove(), 1400);
+        }, i * (blast ? 30 : 50));
     }
 }
-
 // ============================================
 // CLOSE MODALS ON BACKDROP CLICK
 // ============================================
