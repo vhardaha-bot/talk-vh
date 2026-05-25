@@ -1,295 +1,305 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talk VH - Social & Emotional Mentor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talk VH — Social & Emotional Mentor</title>
+  <meta name="description" content="Vivek Hardaha — सीधा सच, बिना किसी दिखावे के। Book a session now." />
+  <meta name="theme-color" content="#050b1a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Kn1bSRvfUse8he0nlA3ct4OK2MZr2Xht-tYZ6nmPCjU5qpyV8jgHbQfD3Spp4woBsIym7LiIphFja0OYutECjgtyLxWgxrufQs6i1uAxttbvy4_S3gy9fji7CnmGCBfjeYSSGiv5urdj5Dl6AuKJ-WAdYKb6Kbvj3D1ETR9c7mEJzLsNhsEBB52jsEv0/s600/289297.png" />
+  <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Kn1bSRvfUse8he0nlA3ct4OK2MZr2Xht-tYZ6nmPCjU5qpyV8jgHbQfD3Spp4woBsIym7LiIphFja0OYutECjgtyLxWgxrufQs6i1uAxttbvy4_S3gy9fji7CnmGCBfjeYSSGiv5urdj5Dl6AuKJ-WAdYKb6Kbvj3D1ETR9c7mEJzLsNhsEBB52jsEv0/s600/289297.png" />
 
-    <!-- PWA Meta -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Talk VH">
-    <meta name="apple-mobile-web-app-title" content="Talk VH">
-    <meta name="theme-color" content="#050b1a">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="Vivek Hardaha - Social & Emotional Mentor. सीधा सच, बिना किसी दिखावे के।">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Icons -->
-    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Kn1bSRvfUse8he0nlA3ct4OK2MZr2Xht-tYZ6nmPCjU5qpyV8jgHbQfD3Spp4woBsIym7LiIphFja0OYutECjgtyLxWgxrufQs6i1uAxttbvy4_S3gy9fji7CnmGCBfjeYSSGiv5urdj5Dl6AuKJ-WAdYKb6Kbvj3D1ETR9c7mEJzLsNhsEBB52jsEv0/s600/289297.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Kn1bSRvfUse8he0nlA3ct4OK2MZr2Xht-tYZ6nmPCjU5qpyV8jgHbQfD3Spp4woBsIym7LiIphFja0OYutECjgtyLxWgxrufQs6i1uAxttbvy4_S3gy9fji7CnmGCBfjeYSSGiv5urdj5Dl6AuKJ-WAdYKb6Kbvj3D1ETR9c7mEJzLsNhsEBB52jsEv0/s600/289297.png">
-    <link rel="manifest" href="/manifest.json">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<div id="talk-vh-master">
+<div id="app">
 
-    <!-- ===== HEADER ===== -->
-    <header class="vh-top-bar">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Kn1bSRvfUse8he0nlA3ct4OK2MZr2Xht-tYZ6nmPCjU5qpyV8jgHbQfD3Spp4woBsIym7LiIphFja0OYutECjgtyLxWgxrufQs6i1uAxttbvy4_S3gy9fji7CnmGCBfjeYSSGiv5urdj5Dl6AuKJ-WAdYKb6Kbvj3D1ETR9c7mEJzLsNhsEBB52jsEv0/s600/289297.png" class="vh-logo-img" alt="Talk VH Logo">
-        <div class="vh-brand-name">TALK <span>VH</span></div>
-    </header>
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <img
+      class="header-logo"
+      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Kn1bSRvfUse8he0nlA3ct4OK2MZr2Xht-tYZ6nmPCjU5qpyV8jgHbQfD3Spp4woBsIym7LiIphFja0OYutECjgtyLxWgxrufQs6i1uAxttbvy4_S3gy9fji7CnmGCBfjeYSSGiv5urdj5Dl6AuKJ-WAdYKb6Kbvj3D1ETR9c7mEJzLsNhsEBB52jsEv0/s600/289297.png"
+      alt="Talk VH Logo"
+    />
+    <span class="header-brand">TALK <em>VH</em></span>
+  </header>
 
-    <!-- ===== HERO — ORBIT SECTION ===== -->
-    <section class="hero-section">
-        <div class="orbit-container">
-            <div class="orbit-ring ring-1"></div>
-            <div class="orbit-ring ring-2"></div>
-            <div class="center-you">YOU</div>
-            <div class="icon-orbit">
-                <div class="orbit-item e1"><span class="orbit-emoji">💔</span><span class="orbit-label">रिश्ते</span></div>
-                <div class="orbit-item e2"><span class="orbit-emoji">🎓</span><span class="orbit-label">करियर</span></div>
-                <div class="orbit-item e3"><span class="orbit-emoji">😔</span><span class="orbit-label">अकेलापन</span></div>
-                <div class="orbit-item e4"><span class="orbit-emoji">🌙</span><span class="orbit-label">तनाव</span></div>
-                <div class="orbit-item e5"><span class="orbit-emoji">⚖️</span><span class="orbit-label">फैसला</span></div>
-                <div class="orbit-item e6"><span class="orbit-emoji">😰</span><span class="orbit-label">डर</span></div>
-                <div class="orbit-item e7"><span class="orbit-emoji">🧭</span><span class="orbit-label">दिशा</span></div>
-                <div class="orbit-item e8"><span class="orbit-emoji">🤯</span><span class="orbit-label">उलझन</span></div>
-            </div>
-        </div>
-
-        <h1 class="headline">सीधा सच।<br>बिना किसी दिखावे के।</h1>
-        <p class="sub-headline">यहाँ आपको मीठी-मीठी झूठी तसल्ली नहीं, बल्कि एक मेंटर के सीधे और कड़वे सच की ज़रूरत है।</p>
-    </section>
-
-    <!-- ===== PAIN POINTS ===== -->
-    <section class="pain-points">
-        <div class="pain-list">
-            <h4>क्या आप इनमें से किसी उलझन में हैं?</h4>
-            <div class="pain-item"><i class="fa-solid fa-heart-crack"></i> रिश्तों की उलझन, धोखा या घुटन</div>
-            <div class="pain-item"><i class="fa-solid fa-briefcase"></i> करियर में रुकावट या असफलता</div>
-            <div class="pain-item"><i class="fa-solid fa-brain"></i> अकेलापन, तनाव या ओवरथिंकिंग</div>
-            <div class="pain-item"><i class="fa-solid fa-scale-balanced"></i> जीवन का कोई बड़ा फैसला लेने में डर</div>
-            <div class="pain-item"><i class="fa-solid fa-moon"></i> नींद नहीं आती, दिमाग बंद नहीं होता</div>
-            <div class="pain-item"><i class="fa-solid fa-eye-slash"></i> लोग क्या सोचेंगे — यह डर हमेशा रहता है</div>
-        </div>
-    </section>
-
-    <!-- ===== BIO / MENTOR CARD ===== -->
-    <section class="bio-section">
-        <div class="bio-card">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxGcYk8vqNSS2roZpqJjPyLbVxCl4hhikcONCBIogBIgl0qnKlc-ZjCEjwnGi1hvu2EwgOq1Y2qOhHt9quiHLYIN3tSMQeDo3j9wg7VVVCZec1DatlBCBjOeK-sDdqvOFK74kjCZhu-XXi9NdU6_SKKA3RRFitTAzkOYLJ3CYaMdoQ34dw2KA49YVOkYIw/s958/145254.png">
-            <div class="bio-text">
-                <span class="bio-title">Social & Emotional Mentor</span>
-                <h3>Vivek Hardaha</h3>
-                <p class="bio-desc">M.A. Sociology &amp; M.Sc. Computer Science. 15+ वर्षों का डिजिटल और व्यावहारिक अनुभव। No-BS दृष्टिकोण।</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== DEGREE BADGES ===== -->
-    <section class="degree-section">
-        <h4 class="section-label">शिक्षा एवं योग्यता</h4>
-        <div class="degree-grid">
-            <div class="degree-badge"><i class="fa-solid fa-graduation-cap"></i><span>M.Sc. Computer Science</span></div>
-            <div class="degree-badge"><i class="fa-solid fa-graduation-cap"></i><span>M.A. Sociology</span></div>
-            <div class="degree-badge"><i class="fa-solid fa-graduation-cap"></i><span>PG Diploma — IGNOU</span></div>
-            <div class="degree-badge"><i class="fa-solid fa-graduation-cap"></i><span>BCA — Computer Apps</span></div>
-            <div class="degree-badge"><i class="fa-solid fa-calendar-check"></i><span>15+ वर्ष अनुभव</span></div>
-            <div class="degree-badge"><i class="fa-brands fa-youtube"></i><span>2× Silver Play Button</span></div>
-        </div>
-    </section>
-
-    <!-- ===== HOW IT WORKS ===== -->
-    <section class="how-section">
-        <h4 class="section-label">कैसे काम करता है?</h4>
-        <div class="steps-row">
-            <div class="step-item">
-                <div class="step-num">1</div>
-                <p>Plan चुनें</p>
-            </div>
-            <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="step-item">
-                <div class="step-num">2</div>
-                <p>Pay करें</p>
-            </div>
-            <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            <div class="step-item">
-                <div class="step-num">3</div>
-                <p>बात करें</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PRICING SECTION ===== -->
-    <section class="pricing-section">
-
-        <!-- FREE TRIAL -->
-        <div class="glass-card card-free">
-            <div class="card-header">
-                <span class="card-title">🎁 पहली बार मुफ़्त</span>
-                <span class="card-price free-tag">FREE</span>
-            </div>
-            <p class="card-desc">पहली बार? बस अपना नाम और नंबर दें। Vivek Bhai खुद संपर्क करेंगे।</p>
-            <button class="btn btn-free" onclick="openFree()">मुफ़्त में Try करें</button>
-        </div>
-
-        <!-- ₹49 TEXT -->
-        <div class="glass-card">
-            <div class="card-header">
-                <span class="card-title">📝 सीधा जवाब</span>
-                <span class="card-price">₹49</span>
-            </div>
-            <p class="card-desc">अपनी परेशानी लिखें। 24 घंटे में written सलाह पाएं।</p>
-            <button class="btn btn-outline" onclick="openBooking('Written Reply', 49)">बुक करें (₹49)</button>
-        </div>
-
-        <!-- ₹99 AUDIO CALL -->
-        <div class="glass-card">
-            <div class="card-header">
-                <span class="card-title">📞 नो फिल्टर कॉल</span>
-                <span class="card-price">₹99</span>
-            </div>
-            <p class="card-desc">20 मिनट की सीधी ऑडियो कॉल। बिना किसी जजमेंट के अपनी बात रखें।</p>
-            <button class="btn btn-outline" onclick="openBooking('Audio Call 20 min', 99)">बुक करें (₹99)</button>
-        </div>
-
-        <!-- ₹199 VIDEO CALL -->
-        <div class="glass-card card-gold">
-            <div class="card-header">
-                <span class="card-title">🎥 Live Video Call</span>
-                <span class="card-price">₹199</span>
-            </div>
-            <p class="card-desc">20 मिनट की face-to-face video session। सबसे असरदार और सीधा समाधान।</p>
-            <button class="btn btn-solid" onclick="openBooking('Video Call 20 min', 199)">बुक करें (₹199)</button>
-        </div>
-
-    </section>
-
-    <!-- ===== BHADAS BOX ===== -->
-    <section class="bhadas-section">
-        <div class="bhadas-card">
-            <h4 class="bhadas-title">🔥 भड़ास निकालो — यहाँ</h4>
-            <p class="bhadas-sub">जो मन में भरा है, यहाँ लिख दो। कोई नहीं देखेगा।</p>
-            <div class="bhadas-box-wrap">
-                <textarea id="bhadasText" class="bhadas-textarea" placeholder="यहाँ लिखो... सब जला देंगे 🔥"></textarea>
-                <div class="fire-overlay" id="fireOverlay"></div>
-            </div>
-            <button class="btn btn-burn" id="burnBtn" onclick="burnIt()">🔥 जला दो सब कुछ</button>
-            <div class="burn-success" id="burnSuccess">
-                <span class="burn-tick">✓</span>
-                <p>सब जल गया। हल्का लग रहा है अब? 😊</p>
-                <button class="btn btn-solid" onclick="openBooking('Written Reply', 49)" style="margin-top:15px;">अब बात करें Vivek Bhai से</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TRUST SEALS ===== -->
-    <section class="trust-section">
-        <div class="trust-item"><i class="fa-solid fa-lock"></i><span>100% Private</span></div>
-        <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span>Judgement Free</span></div>
-        <div class="trust-item"><i class="fa-solid fa-circle-check"></i><span>Real Solutions</span></div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="disclaimer">
-            <h5><i class="fa-solid fa-shield-halved"></i> ज़रूरी सूचना (Disclaimer)</h5>
-            <p>यह कोई क्लिनिकल थेरेपी या मेडिकल ट्रीटमेंट नहीं है। यह एक 'मेंटल क्लैरिटी' और लाइफ गाइडेंस सेशन है। गंभीर स्थिति में कृपया डॉक्टर से संपर्क करें।</p>
-        </div>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Refund Policy</a>
-            <a href="#">100% Anonymous</a>
-        </div>
-        <div class="copyright">© 2026 Talk VH. Designed for mental clarity.</div>
-    </footer>
-
-</div>
-
-<!-- ===== BOOKING MODAL ===== -->
-<div id="bookingModal" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="modal-box">
-        <button class="close-btn" onclick="closeBooking()" aria-label="Close">&times;</button>
-        <div class="modal-h">बुक करें</div>
-        <div class="modal-p">आप अपना असली नाम छुपाकर 'XYZ' भी लिख सकते हैं।</div>
-
-        <div id="formError" class="form-error">कृपया नाम लिखें!</div>
-
-        <div class="input-box">
-            <label for="cName">आपका नाम / Nickname</label>
-            <input type="text" id="cName" placeholder="नाम लिखें..." autocomplete="off">
-        </div>
-        <div class="input-box">
-            <label for="cContact">Email / WhatsApp (Meeting लिंक के लिए)</label>
-            <input type="text" id="cContact" placeholder="Optional — संपर्क विवरण...">
-        </div>
-        <div class="input-box">
-            <label for="cTopic">विषय चुनें</label>
-            <select id="cTopic">
-                <option value="Relationships">रिश्ते / ब्रेकअप / धोखा</option>
-                <option value="Career">करियर / असफलता</option>
-                <option value="Mental">तनाव / उलझन / ओवरथिंकिंग</option>
-                <option value="Decision">बड़ा फैसला</option>
-                <option value="Loneliness">अकेलापन</option>
-                <option value="Other">अन्य</option>
-            </select>
-        </div>
-
-        <div class="pay-bar">
-            <span id="pName" class="pay-plan">—</span>
-            <span class="pay-amt">₹<span id="pPrice">0</span></span>
-        </div>
-
-        <button class="btn btn-solid" id="payBtn" onclick="payNow()">
-            <i class="fa-solid fa-lock" style="margin-right:8px;"></i>Pay करें — UPI
-        </button>
-
-        <div class="trust-seals">
-            <span><i class="fa-solid fa-lock"></i> Secure</span>
-            <span><i class="fa-solid fa-eye-slash"></i> Anonymous</span>
-            <span><i class="fa-solid fa-shield-halved"></i> Private</span>
-        </div>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-orbit-wrap">
+      <!-- Orbit rings -->
+      <div class="orbit-ring r1"></div>
+      <div class="orbit-ring r2"></div>
+      <!-- Center YOU -->
+      <div class="orbit-center">YOU</div>
+      <!-- Orbit items -->
+      <div class="orbit-items">
+        <span class="oi oi-1">💔<small>रिश्ते</small></span>
+        <span class="oi oi-2">🎓<small>करियर</small></span>
+        <span class="oi oi-3">😔<small>अकेलापन</small></span>
+        <span class="oi oi-4">🌙<small>तनाव</small></span>
+        <span class="oi oi-5">⚖️<small>फैसला</small></span>
+        <span class="oi oi-6">😰<small>डर</small></span>
+        <span class="oi oi-7">🧭<small>दिशा</small></span>
+        <span class="oi oi-8">🤯<small>उलझन</small></span>
+      </div>
     </div>
-</div>
 
-<!-- ===== FREE TRIAL MODAL ===== -->
-<div id="freeModal" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="modal-box">
-        <button class="close-btn" onclick="closeFree()" aria-label="Close">&times;</button>
-        <div class="modal-h">🎁 मुफ़्त में बात करें</div>
-        <div class="modal-p">बस नाम और नंबर दें — Vivek Bhai खुद call/message करेंगे।</div>
+    <h1 class="hero-title">सीधा सच।<br />बिना किसी दिखावे के।</h1>
+    <p class="hero-sub">मीठी-मीठी झूठी तसल्ली नहीं — एक मेंटर का कड़वा सच।</p>
+  </section>
 
-        <div id="freeError" class="form-error">कृपया नाम और नंबर दोनों भरें!</div>
-
-        <div class="input-box">
-            <label for="freeName">आपका नाम</label>
-            <input type="text" id="freeName" placeholder="नाम लिखें...">
-        </div>
-        <div class="input-box">
-            <label for="freePhone">WhatsApp नंबर</label>
-            <input type="tel" id="freePhone" placeholder="10 अंक का नंबर..." maxlength="10">
-        </div>
-
-        <button class="btn btn-solid" onclick="submitFree()">Submit करें</button>
-
-        <!-- Success State -->
-        <div id="freeSuccess" class="success-msg">
-            <span class="burn-tick">✓</span>
-            <p>आपका नंबर मिल गया! Vivek Bhai जल्द संपर्क करेंगे।</p>
-        </div>
+  <!-- ── PAIN POINTS ── -->
+  <section class="section pain-section">
+    <div class="glass-card">
+      <p class="section-eyebrow">क्या आप इनमें से किसी उलझन में हैं?</p>
+      <ul class="pain-list">
+        <li><i class="fa-solid fa-heart-crack"></i> रिश्तों की उलझन, धोखा या घुटन</li>
+        <li><i class="fa-solid fa-briefcase"></i> करियर में रुकावट या असफलता</li>
+        <li><i class="fa-solid fa-brain"></i> अकेलापन, तनाव या ओवरथिंकिंग</li>
+        <li><i class="fa-solid fa-scale-balanced"></i> जीवन का कोई बड़ा फैसला लेने में डर</li>
+        <li><i class="fa-solid fa-moon"></i> नींद नहीं आती, दिमाग बंद नहीं होता</li>
+        <li><i class="fa-solid fa-eye-slash"></i> लोग क्या सोचेंगे — यह डर हमेशा रहता है</li>
+      </ul>
     </div>
-</div>
+  </section>
 
-<!-- ===== PAYMENT SUCCESS SCREEN ===== -->
-<div id="successScreen" class="success-screen">
-    <div class="success-inner">
+  <!-- ── MENTOR PROFILE ── -->
+  <section class="section profile-section">
+    <div class="profile-pic-wrap">
+      <img
+        class="profile-pic"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxGcYk8vqNSS2roZpqJjPyLbVxCl4hhikcONCBIogBIgl0qnKlc-ZjCEjwnGi1hvu2EwgOq1Y2qOhHt9quiHLYIN3tSMQeDo3j9wg7VVVCZec1DatlBCBjOeK-sDdqvOFK74kjCZhu-XXi9NdU6_SKKA3RRFitTAzkOYLJ3CYaMdoQ34dw2KA49YVOkYIw/s958/145254.png"
+        alt="Vivek Hardaha"
+      />
+    </div>
+    <div class="profile-info">
+      <span class="profile-tag">Social &amp; Emotional Mentor</span>
+      <h2 class="profile-name">Vivek Hardaha</h2>
+      <p class="profile-desc">M.A. Sociology &amp; M.Sc. Computer Science · 15+ वर्षों का व्यावहारिक अनुभव · No-BS दृष्टिकोण</p>
+    </div>
+  </section>
+
+  <!-- ── DEGREE BADGES ── -->
+  <section class="section">
+    <p class="section-eyebrow center">शिक्षा एवं योग्यता</p>
+    <div class="badge-grid">
+      <div class="badge"><i class="fa-solid fa-graduation-cap"></i><span>M.Sc. Computer Science</span></div>
+      <div class="badge"><i class="fa-solid fa-graduation-cap"></i><span>M.A. Sociology</span></div>
+      <div class="badge"><i class="fa-solid fa-graduation-cap"></i><span>PG Diploma — IGNOU</span></div>
+      <div class="badge"><i class="fa-solid fa-graduation-cap"></i><span>BCA — Computer Apps</span></div>
+      <div class="badge"><i class="fa-solid fa-calendar-check"></i><span>15+ वर्ष अनुभव</span></div>
+      <div class="badge"><i class="fa-brands fa-youtube"></i><span>2× Silver Play Button</span></div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="section">
+    <p class="section-eyebrow center">कैसे काम करता है?</p>
+    <div class="steps-row">
+      <div class="step"><div class="step-num">1</div><span>Plan चुनें</span></div>
+      <i class="fa-solid fa-chevron-right step-arrow"></i>
+      <div class="step"><div class="step-num">2</div><span>Pay करें</span></div>
+      <i class="fa-solid fa-chevron-right step-arrow"></i>
+      <div class="step"><div class="step-num">3</div><span>बात करें</span></div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section class="section pricing-section">
+
+    <!-- FREE -->
+    <div class="glass-card card-free">
+      <div class="card-row">
+        <span class="card-title">🎁 पहली बार मुफ़्त</span>
+        <span class="card-price green">FREE</span>
+      </div>
+      <p class="card-desc">पहली बार? बस नाम और नंबर दें। Vivek Bhai खुद संपर्क करेंगे।</p>
+      <button class="btn btn-green" onclick="openFreeModal()">मुफ़्त में Try करें</button>
+    </div>
+
+    <!-- ₹49 -->
+    <div class="glass-card">
+      <div class="card-row">
+        <span class="card-title">📝 सीधा जवाब</span>
+        <span class="card-price">₹49</span>
+      </div>
+      <p class="card-desc">अपनी परेशानी लिखें। 24 घंटे में written सलाह पाएं।</p>
+      <button class="btn btn-outline" onclick="openBookingModal('सीधा जवाब', 49)">बुक करें (₹49)</button>
+    </div>
+
+    <!-- ₹99 -->
+    <div class="glass-card">
+      <div class="card-row">
+        <span class="card-title">📞 नो फिल्टर कॉल</span>
+        <span class="card-price">₹99</span>
+      </div>
+      <p class="card-desc">20 मिनट की सीधी Audio Call। बिना किसी जजमेंट के।</p>
+      <button class="btn btn-outline" onclick="openBookingModal('नो फिल्टर कॉल', 99)">बुक करें (₹99)</button>
+    </div>
+
+    <!-- ₹199 -->
+    <div class="glass-card card-gold">
+      <div class="card-row">
+        <span class="card-title">🎥 Live Video Call</span>
+        <span class="card-price gold">₹199</span>
+      </div>
+      <p class="card-desc">20 मिनट की face-to-face video session। सबसे असरदार।</p>
+      <button class="btn btn-gold" onclick="openBookingModal('Live Video Call', 199)">बुक करें (₹199)</button>
+    </div>
+
+  </section>
+
+  <!-- ── BHADAS BOX ── -->
+  <section class="section">
+    <div class="bhadas-card" id="bhadasCard">
+
+      <!-- Default state -->
+      <div id="bhadasDefault">
+        <h3 class="bhadas-title">🔥 भड़ास निकालो — यहाँ</h3>
+        <p class="bhadas-sub">जो मन में भरा है, यहाँ लिख दो। कोई नहीं देखेगा।</p>
+        <textarea
+          id="bhadasText"
+          class="bhadas-textarea"
+          placeholder="यहाँ लिखो... सब जला देंगे 🔥"
+          rows="4"
+        ></textarea>
+        <button class="btn btn-fire" id="burnBtn">🔥 जला दो सब कुछ</button>
+      </div>
+
+      <!-- Success state (hidden initially) -->
+      <div id="bhadasSuccess" class="bhadas-success hidden">
         <div class="success-icon">✓</div>
-        <h2>Payment हो गया! 🎉</h2>
-        <p>आपकी booking confirm हो गई है।</p>
-        <p class="success-sub">Vivek Bhai जल्द आपसे संपर्क करेंगे।<br>या email करें: <strong>talkvh.help@gmail.com</strong></p>
-        <button class="btn btn-solid" onclick="closeSuccess()" style="margin-top:25px;">ठीक है 👍</button>
+        <h3>भड़ास निकल गई!</h3>
+        <p>अब गहरी साँस लो। 😊</p>
+        <p class="success-cta">हल्का लग रहा है? अब बात करते हैं।</p>
+        <button class="btn btn-gold" onclick="openBookingModal('सीधा जवाब', 49)">Vivek Bhai से बात करें</button>
+      </div>
+
     </div>
+  </section>
+
+  <!-- ── TRUST SEALS ── -->
+  <section class="trust-row">
+    <span><i class="fa-solid fa-lock"></i> 100% Private</span>
+    <span><i class="fa-solid fa-shield-halved"></i> Judgement Free</span>
+    <span><i class="fa-solid fa-circle-check"></i> Real Solutions</span>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="glass-card disclaimer">
+      <p class="disclaimer-head"><i class="fa-solid fa-shield-halved"></i> ज़रूरी सूचना</p>
+      <p>यह कोई क्लिनिकल थेरेपी या मेडिकल ट्रीटमेंट नहीं है। यह एक मेंटल क्लैरिटी और लाइफ गाइडेंस सेशन है। गंभीर स्थिति में कृपया डॉक्टर से संपर्क करें।</p>
+    </div>
+    <nav class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Refund Policy</a>
+      <a href="#">100% Anonymous</a>
+    </nav>
+    <p class="copyright">© 2026 Talk VH · Designed for mental clarity</p>
+  </footer>
+
+</div><!-- /#app -->
+
+
+<!-- ════════════════════════════════════════
+     BOOKING MODAL
+════════════════════════════════════════ -->
+<div id="bookingModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Booking">
+  <div class="modal-box">
+    <button class="modal-close" id="closeBooking" aria-label="Close">&#x2715;</button>
+    <h2 class="modal-title">बुक करें</h2>
+    <p class="modal-hint">आप अपना असली नाम छुपाकर 'XYZ' भी लिख सकते हैं।</p>
+
+    <div id="bookingError" class="form-error">कृपया नाम लिखें!</div>
+
+    <label class="field-label" for="bName">आपका नाम / Nickname</label>
+    <input class="field-input" type="text" id="bName" placeholder="नाम लिखें..." autocomplete="off" />
+
+    <label class="field-label" for="bContact">Email / WhatsApp (Meeting लिंक के लिए)</label>
+    <input class="field-input" type="text" id="bContact" placeholder="Optional..." />
+
+    <label class="field-label" for="bTopic">विषय</label>
+    <select class="field-input" id="bTopic">
+      <option value="Relationships">रिश्ते / ब्रेकअप / धोखा</option>
+      <option value="Career">करियर / असफलता</option>
+      <option value="Mental">तनाव / उलझन / ओवरथिंकिंग</option>
+      <option value="Decision">बड़ा फैसला</option>
+      <option value="Loneliness">अकेलापन</option>
+      <option value="Other">अन्य</option>
+    </select>
+
+    <div class="pay-summary">
+      <span id="bPlanName" class="pay-plan">—</span>
+      <span class="pay-amount">₹<span id="bPrice">0</span></span>
+    </div>
+
+    <button class="btn btn-gold" id="payBtn">
+      <i class="fa-solid fa-lock"></i> Pay करें — UPI
+    </button>
+
+    <div class="modal-seals">
+      <span><i class="fa-solid fa-lock"></i> Secure</span>
+      <span><i class="fa-solid fa-eye-slash"></i> Anonymous</span>
+      <span><i class="fa-solid fa-shield-halved"></i> Private</span>
+    </div>
+  </div>
 </div>
 
-<!-- JS -->
-<script src="js/app.js"></script>
 
+<!-- ════════════════════════════════════════
+     FREE TRIAL MODAL
+════════════════════════════════════════ -->
+<div id="freeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Free Trial">
+  <div class="modal-box">
+    <button class="modal-close" id="closeFree" aria-label="Close">&#x2715;</button>
+    <h2 class="modal-title">🎁 मुफ़्त में बात करें</h2>
+    <p class="modal-hint">बस नाम और नंबर दें — Vivek Bhai खुद call/message करेंगे।</p>
+
+    <div id="freeError" class="form-error">कृपया नाम और नंबर दोनों भरें!</div>
+
+    <label class="field-label" for="freeName">आपका नाम</label>
+    <input class="field-input" type="text" id="freeName" placeholder="नाम लिखें..." />
+
+    <label class="field-label" for="freePhone">WhatsApp नंबर</label>
+    <input class="field-input" type="tel" id="freePhone" placeholder="10 अंक का नंबर..." maxlength="10" />
+
+    <button class="btn btn-gold" id="freeSubmitBtn">Submit करें</button>
+
+    <div id="freeSuccess" class="free-success hidden">
+      <div class="success-icon">✓</div>
+      <p>आपका नंबर मिल गया!<br />Vivek Bhai जल्द संपर्क करेंगे।</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAYMENT SUCCESS SCREEN
+════════════════════════════════════════ -->
+<div id="paySuccess" class="pay-success-screen hidden">
+  <div class="pay-success-inner">
+    <div class="success-icon big">✓</div>
+    <h2>Payment हो गया! 🎉</h2>
+    <p>आपकी booking confirm हो गई।</p>
+    <p class="pay-email">Email: <strong>talkvh.help@gmail.com</strong></p>
+    <button class="btn btn-gold" id="closePaySuccess">ठीक है 👍</button>
+  </div>
+</div>
+
+
+<script src="js/app.js" defer></script>
 </body>
 </html>
