@@ -9,7 +9,7 @@
 const CFG = {
   upiId:   'v.hardaha@oksbi',
   upiName: 'TalkVH',
-  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbzxhFL50AJsD0R9-VN0E-suTH-m1cQ20kL4evpNcJJf9A8PSSPSwpgT1sQMhFouTJ_n/exec'
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbxH1GizCX-uOrJtscJK99Ny1kyUmXq8zTnFla94Iwc/exec'
 };
 
 /* ── DOM REFS — grabbed once on DOMContentLoaded ── */
