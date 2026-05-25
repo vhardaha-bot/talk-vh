@@ -138,23 +138,28 @@ function closeFreeModal() {
 }
 
 function handleFreeSubmit() {
-  const name  = DOM.freeName.value.trim();
-  const phone = DOM.freePhone.value.trim();
+  const name   = DOM.freeName.value.trim();
+  const phone  = DOM.freePhone.value.trim();
+  const reason = document.getElementById('freeReason').value;
+  const time   = document.getElementById('freeTime').value;
 
-  if (!name || phone.length < 10) {
+  if (!name || phone.length < 10 || !reason || !time) {
     DOM.freeError.style.display = 'block';
     return;
   }
   DOM.freeError.style.display = 'none';
 
-  /* Send to Apps Script if configured */
-  sendToSheet({ type: 'FREE_TRIAL', name, phone });
+  sendToSheet({
+    type:    'FREE_TRIAL',
+    name:    name,
+    phone:   phone,
+    topic:   reason,
+    contact: time
+  });
 
-  /* Show success */
   DOM.freeSubmitBtn.style.display = 'none';
   DOM.freeSuccess.classList.remove('hidden');
 }
-
 /* ════════════════════════════════════════
    PAYMENT
 ════════════════════════════════════════ */
