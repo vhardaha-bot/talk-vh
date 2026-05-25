@@ -483,6 +483,9 @@ body {
 .bhadas-box-wrap {
     position: relative;
     margin-bottom: 14px;
+    overflow: hidden;
+    min-height: 120px;
+}
 }
 
 .bhadas-textarea {
